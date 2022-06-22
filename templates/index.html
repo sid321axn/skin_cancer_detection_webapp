@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block content %}
+
+<body>
+This web application is based on a 3-layer convolutional neural network (CNN), trained to recognise malaria parasite from human blood sample. The neural network achieved accuracy exceeding 95% on the relevant test set of more than 2700 blood sample images. Please note that the predictive accuracy of the model, depends on the quality and quantity of the training data. Therefore the model has limitations and cannot be used for definite clinical predictions! Instead it can be used for research and comparison purposes (please see notes below).
+</body>
+
+<h2></h2>
+
+<div>
+    <form id="upload-file" action="/predict" method="POST" enctype="multipart/form-data">
+
+        <div>
+            <label for="file">Choose Image to upload</label>
+            <input type="file" id="file" name="file" multiple>
+          </div>
+          <div>
+           
+            <input type="submit" class="btn btn-primary btn-lg " name="submit" value="Predict">
+          </div>
+
+       
+        
+          
+    </form>
+
+    
+        
+  
+   
+
+    <div class="loader" style="display:none;"></div>
+
+    <h3 id="result">
+        <span> </span>
+    </h3>
+
+</div>
+
+{% endblock %}
