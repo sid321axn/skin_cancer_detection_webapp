@@ -1,2 +1,3 @@
-uploads/*.jpg
-uploads/*.png
+__pycache__
+uploads
+models
