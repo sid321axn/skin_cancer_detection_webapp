@@ -12,8 +12,7 @@
 
 > This web application has been created and the changes to whatManu Siddhartha  had already prepared were the following:
 <ul>
-<li>Inclusion of a procfile to serve the app with gunicorn on the Heroku server after upload (for uploading this python app to Heroku please follow Heroku documentation on how to use git with Heroku)</li>
-<li>As per Heroku requirements for stability and reproducibility, versions of all required python environments were specified in the requirements.txt file</li>
+
 <li>Inclusion of gunicorn to the requirements.txt file</li>
 <li>Changed the app.py (flask app) file to adapt it to the required functionality according to the trained binary image classification model. The program was also modified to delete every uploaded image after providing the prediction. This will prevent exceeding capacity limits on Heroku servers. The last lines of the file have been modified to work with gunicorn. </li>
 <li>The Index.html and base.html files have been modified accordingly to include references and information about the model</li>
