@@ -1,7 +1,41 @@
-{% extends "base.html" %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Design by foolishdeveloper.com -->
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet"  href="{{ url_for('static', filename='css/style.css')}}">
+  <title>Skin Cancer Detector</title>
+ 
+
+</head>
 
 
-
+<body>
+  <div class="nav">
+  <input type="checkbox" id="nav-check">
+  <div class="nav-header">
+    <div class="nav-title">
+      Skin Cancer Detector
+    </div>
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+  
+  <div class="nav-links">
+    <a href="/" >Home</a>
+ 
+    <a href="#" target="_blank">Contact Us</a>
+ 
+  </div>
+</div>
 
 
 
@@ -11,26 +45,43 @@
 
     <div class="float-child">
         <h2 class="a">Uploaded Image</h2>
-      <div class="green"><img src="{{ url_for('upload_img', filename=file_name) }}" class="img-fluid"></div>
+      <div class="green"><img src="{{ url_for('upload_img', filename=file_name) }}" ></div>
     </div>
     
     <div class="float-child">
-        <h2 class="a">Class Activation Map</h2>
-      <div class="blue"><img src="{{ url_for('upload_img', filename=heatmap_file) }}" class="img-fluid"></div>
+        <h2 class="a">Grad-Cam Heatmap</h2>
+      <div class="blue"><img src="{{ url_for('upload_img', filename=heatmap_file) }}" ></div>
     </div>
     
 
-    <br><br> <br><br> <br><br>
-    <div class="a">
-        <h3 >
-            Predicted Class: <span>{{result}} </span>
-        </h3>
-    </div>
+    
+    
   </div>
+
+ <!-- container finish  -->
+ <br><br>
+ <div class="float-table">
+   <table>
+     <tr>
+       <th>Name</th>
+       <th>Confidence</th>
+     </tr>
+     {% for i, j in result %}
+     <tr>
+         <td>{{ i.title() }}</td>
+         <td>{{ j }}%</td>
+     </tr>
+ {% endfor %}
+</table>
  
+  
+
+  
+    
 
 
 
 
 
-{% endblock %}
+</body>
+</html>

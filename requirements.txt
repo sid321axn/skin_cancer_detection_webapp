@@ -6,5 +6,4 @@ h5py
 tensorflow==2.8.2
 gunicorn
 Pillow
-IPython
 matplotlib

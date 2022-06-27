@@ -1,39 +1,100 @@
-{% extends "base.html" %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Design by foolishdeveloper.com -->
+<head>
+  <meta charset="UTF-8">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <link rel="stylesheet"  href="{{ url_for('static', filename='css/main.css')}}">
+  <title>Skin Cancer Detector</title>
+ 
+
+</head>
 <body>
-This web application is based on a 3-layer convolutional neural network (CNN), trained to recognise malaria parasite from human blood sample. The neural network achieved accuracy exceeding 95% on the relevant test set of more than 2700 blood sample images. Please note that the predictive accuracy of the model, depends on the quality and quantity of the training data. Therefore the model has limitations and cannot be used for definite clinical predictions! Instead it can be used for research and comparison purposes (please see notes below).
-</body>
+<!-- This example requires Tailwind CSS v2.0+ -->
 
-<h2></h2>
 
-<div>
-    <form id="upload-file" action="/predict" method="POST" enctype="multipart/form-data">
-
-        <div>
-            <label for="file">Choose Image to upload</label>
-            <input type="file" id="file" name="file" multiple>
-          </div>
-          <div>
-           
-            <input type="submit" class="btn btn-primary btn-lg " name="submit" value="Predict">
-          </div>
-
-       
-        
-          
-    </form>
-
-    
-        
+<div class="nav">
+  <input type="checkbox" id="nav-check">
+  <div class="nav-header">
+    <div class="nav-title">
+      Skin Cancer Detector
+    </div>
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
   
-   
-
-    <div class="loader" style="display:none;"></div>
-
-    <h3 id="result">
-        <span> </span>
-    </h3>
-
+  <div class="nav-links">
+    <a href="/" >Home</a>
+    
+    <a href="#" target="_blank">Contact Us</a>
+ 
+  </div>
 </div>
 
-{% endblock %}
+
+
+ <div class="center">
+  <form id="upload-file" action="/predict" method="POST" enctype="multipart/form-data">
+  <div class="form-input">
+    <div class="preview">
+      <img id="file-ip-1-preview">
+    </div>
+    <label for="file-ip-1">Upload Skin Lesion Image</label>
+    <input type="file" name="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
+     <!-- <input type="submit" class="btn-prev" id="btn-display" name="submit" onclick="$('#loading').show();" value="Predict"> -->
+
+     <input type="submit" class="btn-prev" id="btn-display" name="submit" onclick="start(0)" value="Predict">
+     <br><br>
+     <progress id="progressBar" class="pro-prev" value="0" max="100" style="width:300px;"></progress>
+  <span id="status"></span>
+  </div>
+  
+</div> 
+</form>
+
+
+
+
+<script type="text/javascript">
+  function showPreview(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview = document.getElementById("file-ip-1-preview");
+    var prevbtn = document.getElementById("btn-display");
+    var progressBar = document.getElementById("progressBar");
+    preview.src = src;
+    preview.style.display = "block";
+    prevbtn.style.display="block";
+    progressBar.style.display="block";
+  }
+}
+</script>
+
+<script type="text/javascript">
+  function start(al) {
+  var bar = document.getElementById('progressBar');
+  var status = document.getElementById('status');
+  status.innerHTML = al + "%";
+  bar.value = al;
+  al++;
+  var sim = setTimeout("start(" + al + ")", 1);
+  if (al == 100) {
+    status.innerHTML = "100%";
+    bar.value = 100;
+    clearTimeout(sim);
+    var finalMessage = document.getElementById('finalMessage');
+    finalMessage.innerHTML = "Process is complete";
+  }
+}
+
+  </script>
+</body>
+</html>
