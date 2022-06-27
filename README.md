@@ -1,4 +1,4 @@
-# flask/gunicorn based Heroku web app for malaria detection
+# Flask web app for Skin Cancer Detection
 
 [![](https://img.shields.io/badge/python-2.7%2C%203.5%2B-green.svg)]()
 
@@ -6,11 +6,9 @@
 
 ------------------
 ## About the app
-> This repository was created to help clarify how to utilise flask and gunicorn to easily deploy a python/keras deep learning model as a web app on Heroku. This example features code for online deployment of a binary medical image classification model, based on convolutional neural network architecture. The CNN has three hidden layers and has been trained on the following malaria parasite image dataset  <a href="https://ceb.nlm.nih.gov/repositories/malaria-datasets/">National Library of Medicine</a>. The trained model achieved accuracy of more than 95% on the test set and its weights have been saved in the Models folder (see file: my_model.h5) in the very useful HDF5 format. You may use your own saved trained model! Just make sure you put it in the Models folder and name it appropriately so that the flask app may call it.
+> This repository was created to help clarify how to utilise flask and gunicorn to easily deploy a python/keras deep learning model as a web app on Azure. This example features code for online deployment of a multi-class medical image classification model, based on convolutional neural network architecture. The CNN has three hidden layers and has been trained on the following  Skin Cancer dataset  <a href="https://challenge.isic-archive.com/data/"> ISIC Skin Cancer Challenge 2019</a>. The trained model achieved accuracy of more than 97% on the test set and its weights have been saved in the Models folder (see file: my_model_v1.h5) in the very useful HDF5 format. You may use your own saved trained model! Just make sure you put it in the Models folder and name it appropriately so that the flask app may call it.
 
-> A JavaScript app running on the browser calls the Flask app (app.py) to load the model weights and return results to the JavaScript  app (through the 'GET' and 'POST' methods).
 
-> This app is currently live and can be found at: [Malaria Detection App](https://malaria-detection-app.herokuapp.com/)</a>.
 
 > This web application has been created and the changes to whatManu Siddhartha  had already prepared were the following:
 <ul>
@@ -40,19 +38,10 @@ See [Keras applications](https://keras.io/applications/) for more available mode
 
 Modify files in `templates` and `static` directory.
 
-`index.html`, `base.html` for the UI and `main.js` for all the behaviors
+`index.html`, `predict.html` for the UI and `app.py` for all the behaviors
 
 ## Deployment
 
-To deploy it for public use, you need to upload this app on heroku or other python enabled server. However heroku is pretty good at recognising and running python apps. There is also a free version!
+Update soon
 
-## More resources
 
-Check Siraj's ["How to Deploy a Keras Model to Production"](https://youtu.be/f6Bf3gl4hWY) video. The corresponding [repo](https://github.com/llSourcell/how_to_deploy_a_keras_model_to_production).
-
-[Building a simple Keras + deep learning REST API](https://blog.keras.io/building-a-simple-keras-deep-learning-rest-api.html).
-
-[How to deploy a Flask App to Heroku](https://progblog.io/How-to-deploy-a-Flask-App-to-Heroku/).
-
-"# deep-learning-malaria-detection" 
-"# malaria-detection-web-app" 
